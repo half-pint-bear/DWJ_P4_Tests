@@ -2,7 +2,7 @@
 
 ob_start();
 ?>
-<form action="home" method="post">
+<form action="" method="post">
 	<p>Nom :
 		<input type="text" id="login" name="login"/>
 		<input type="submit" value="Créer"/>

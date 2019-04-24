@@ -5,4 +5,4 @@ const HOST = 'localhost',
 	  CHARSET = 'utf8',
 	  DB_HOST = 'mysql:host=' . HOST . ';dbname=' . DB_NAME . ';charset=' . CHARSET,
 	  DB_USER = 'root',
-	  DB_PASSWORD = 'Mariar00t$*db';
+	  DB_PASSWORD = '';
