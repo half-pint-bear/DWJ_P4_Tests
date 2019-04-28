@@ -4,6 +4,7 @@ namespace App\src\controller;
 use App\src\model\PostManager;
 use App\src\model\CommentManager;
 use \App\src\model\UserManager;
+use App\src\model\User;
 
 class FrontController{
 	public function home(){
@@ -24,6 +25,8 @@ class FrontController{
 	}
 
 	public function login(){
-		
+		$userManager = new UserManager;
+		$user = new User($_REQUEST);
+		require 'view/loginView.php';
 	}
 }
