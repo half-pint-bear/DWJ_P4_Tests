@@ -20,13 +20,19 @@ class Router{
 		{
 			if(isset($_GET['action']))
 			{
-				//Change if/else by switch when new action will be defined
-				if($_GET['action'] == 'home')
-					$this->_frontCtrl->home();
-				elseif($_GET['action'] == 'post')
+				switch($_GET['action'])
 				{
-					if(isset($_GET['id']) && $_GET['id'] > 0)
+					case 'home':
+						$this->_frontCtrl->home();
+						break;
+					case 'post':
 						$this->_frontCtrl->post();
+						break;
+					case 'login':
+						$this->_frontCtrl->login();
+						break;
+					default:
+						echo '<p>Action non valide</p>';
 				}
 			}
 			else
