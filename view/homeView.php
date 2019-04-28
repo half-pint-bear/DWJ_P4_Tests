@@ -1,14 +1,6 @@
 <?php
 
 ob_start();
-?>
-<form action="" method="post">
-	<p>Nom :
-		<input type="text" id="login" name="login"/>
-		<input type="submit" value="Créer"/>
-	</p>
-</form>
-<?php
 
 foreach($posts as $post)
 {

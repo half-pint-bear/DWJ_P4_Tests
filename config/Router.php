@@ -20,6 +20,7 @@ class Router{
 		{
 			if(isset($_GET['action']))
 			{
+				//Change if/else by switch when new action will be defined
 				if($_GET['action'] == 'home')
 					$this->_frontCtrl->home();
 				elseif($_GET['action'] == 'post')

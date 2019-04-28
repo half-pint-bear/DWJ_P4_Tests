@@ -1,6 +1,5 @@
 <?php
 namespace App\src\controller;
-require 'vendor/autoload.php';
 
 use App\src\model\PostManager;
 use App\src\model\CommentManager;
@@ -15,7 +14,6 @@ class FrontController{
 	}
 
 	public function post(){
-
 		$onePost = new PostManager();
 		$post = $onePost->getOnePost($_GET['id']);
 
@@ -23,5 +21,9 @@ class FrontController{
 		$comments = $comm->getComments($_GET['id']);
 
 		require 'view/postView.php';
+	}
+
+	public function login(){
+		
 	}
 }

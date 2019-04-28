@@ -1,8 +1,6 @@
 <?php
 namespace App\src\model;
 
-require_once 'Manager.php';
-
 class PostManager extends Manager{
 	public function getAllPosts(){
 		$sql = 'SELECT * FROM mvc_posts ORDER BY id';
