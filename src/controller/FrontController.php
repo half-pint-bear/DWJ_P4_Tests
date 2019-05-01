@@ -26,6 +26,7 @@ class FrontController{
 
 	public function login(){
 		$userManager = new UserManager();
+		$user = $userManager->readUser($_POST['login']);
 		require 'view/loginView.php';
 	}
 }

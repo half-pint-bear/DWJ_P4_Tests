@@ -10,8 +10,8 @@ class UserManager extends Manager{
 		return $newUser;
 	}
 
-	public function readUser($userId){
-		$sql = 'SELECT id, login FROM mvc_users WHERE id = ?';
+	public function readUser($userLogin){
+		$sql = 'SELECT id, login FROM mvc_users WHERE login = ?';
 		$req = $this->queryExecution($sql, array($userId));
 		$userInfo = $req->fetch(\PDO::FETCH_ASSOC);
 		
