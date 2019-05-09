@@ -3,16 +3,17 @@ namespace App\src\model;
 
 class UserManager extends Manager{
 	//Users table management methods
-	public function createUser($userId, $userLogin){
-		$sql = 'INSERT INTO mvc_users(id, login, registration_date) VALUES(?, ?, NOW())';
-		$newUser = $this->queryExecution($sql, array($userId, $userLogin));
+	public function createUser($userLogin){
+		$sql = 'INSERT INTO mvc_users(login, registration_date) VALUES(?, NOW())';
+		$newUser = $this->queryExecution($sql, array($userLogin));
 
 		return $newUser;
 	}
 
 	public function readUser($userLogin){
-		$sql = 'SELECT id, login FROM mvc_users WHERE login = ?';
-		$req = $this->queryExecution($sql, array($userId));
+		$sql = 'SELECT id, login, password FROM mvc_users WHERE login = ?';
+		$req = $this->queryExecution($sql, array($userLogin));
+
 		$userInfo = $req->fetch(\PDO::FETCH_ASSOC);
 		
 		return $userInfo;

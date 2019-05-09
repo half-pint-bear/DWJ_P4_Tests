@@ -31,6 +31,18 @@ class Router{
 					case 'login':
 						$this->_frontCtrl->login();
 						break;
+					case 'sign-up':
+						$this->_frontCtrl->signUp();
+						break;
+					case 'logout':
+						$this->_frontCtrl->logout();
+						break;
+					case 'addComment':
+						$this->_frontCtrl->addComment($_GET['id'], $_SESSION['login'], $_POST['newComment']);
+						break;
+					case 'reportComment':
+						$this->_frontCtrl->signalComment();
+						break;
 					default:
 						echo '<p>Action non valide</p>';
 				}

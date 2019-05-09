@@ -1,18 +1,19 @@
 <?php
 ob_start();
 
-
-if(isset($_POST['login']) && isset($_POST['password']))
+if(isset($_POST['login']))
 {
-	$user = $userManager->readUser($_POST['login']);
-	if($user['login'] == $_POST['login'] && $user['password'] == $_POST['password'])
+	if($_POST['password'] == $_POST['confirm'])
 	{
+		$user = $userManager->createUser($_POST['login']);
 		session_start();
-		$_SESSION['login'] = $user['login'];
+		$_SESSION['login'] = $_POST['login'];
 		header('Location:index.php');
 	}
 }
+
 ?>
+
 <p><a href="index.php?action=home">Retour à l'accueil</a></p>
 <br><br>
 
@@ -23,7 +24,11 @@ if(isset($_POST['login']) && isset($_POST['password']))
 	<label for="password">Mot de passe :</label>
 	<input type="password" id="password" name="password" required/>
 	<br><br>
-	<input type="submit" value="S'identifier" name="sign-in"/>
+	<label for="confirm">Confirmer mot de passe :</label>
+	<input type="password" id="confirm" name="confirm"/>
+	<br><br>
+	<input type="submit" value="Créer un compte" name="sign-up"/>
+	
 </form>
 
 <?php

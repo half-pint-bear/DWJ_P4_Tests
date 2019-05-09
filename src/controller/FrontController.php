@@ -4,7 +4,6 @@ namespace App\src\controller;
 use App\src\model\PostManager;
 use App\src\model\CommentManager;
 use \App\src\model\UserManager;
-use App\src\model\User;
 
 class FrontController{
 	public function home(){
@@ -24,9 +23,40 @@ class FrontController{
 		require 'view/postView.php';
 	}
 
+	public function addComment($postId, $author, $comment){
+		$commentManager = new CommentManager();
+		$newComment = $commentManager->postComment($postId, $author, $comment);
+
+		if($newComment === false)
+		{
+			throw new Exception('Impossible d\'ajouter le commentaire');
+		}
+		else
+		{
+			header('Location:index.php?action=post&id=' . $postId);
+		}
+	}
+
+	public function signalComment(){
+		$commentManager = new CommentManager();
+		$report = $commentManager->reportComment($_GET['id']);
+
+		require 'view/reportView.php';
+	}
+
 	public function login(){
 		$userManager = new UserManager();
-		$user = $userManager->readUser($_POST['login']);
+
 		require 'view/loginView.php';
+	}
+
+	public function signUp(){
+		$userManager = new UserManager();
+
+		require 'view/signUpView.php';
+	}
+
+	public function logout(){
+		require 'view/logOutView.php';
 	}
 }
