@@ -24,11 +24,17 @@ class CommentManager extends Manager{
 		return $report;
 	}
 
-	public function flagComment($commentId){
-		//get number of flags
+	public function countFlags($commentId){
+		$sql = 'SELECT COUNT(flags) FROM reported_comments WHERE comment_id = ?';
+		$totalFlags = $this->queryExecution($sql, array($commentId))->fetchColumn();
+		
+		return $totalFlags;
+	}
 
-		//flags ++
+	public function flagComment($flags, $commentId){
+		$sql = 'UPDATE reported_comments SET flags = ? WHERE id = ?';
+		$plusOneFlag = $this->queryExecution($sql, array($flags, $commentId));
 
-		//update flags value & return it
+		return $plusOneFlag;
 	}
 }

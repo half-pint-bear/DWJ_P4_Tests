@@ -8,6 +8,15 @@
 </form>
 
 <?php
+if(isset($_POST['cancel']))
+{
+	header('Location:index.php?action=post&id=' . $_GET['id']);
+}
+elseif(isset($_POST['flag']))
+{
+	header('Location:index.php?action=flagged&id=' . $_GET['id']);
+}
+
 $content = ob_get_clean();
 
 require 'template.php';

@@ -44,6 +44,15 @@ class FrontController{
 		require 'view/reportView.php';
 	}
 
+	public function addFlagg($commentId){
+		$commentManager = new CommentManager();
+		$totalFlags = $commentManager->countFlags($_GET['id']);
+		$totalFlags++;
+		$plusOneFlag = $commentManager->flagComment($totalFlags, $commentId);
+
+		require 'view/flaggedView.php';
+	}
+
 	public function login(){
 		$userManager = new UserManager();
 

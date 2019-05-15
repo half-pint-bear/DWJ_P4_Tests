@@ -43,6 +43,9 @@ class Router{
 					case 'reportComment':
 						$this->_frontCtrl->signalComment();
 						break;
+					case 'flagged':
+						$this->_frontCtrl->addFlagg($_GET['id']);
+						break;
 					default:
 						echo '<p>Action non valide</p>';
 				}
