@@ -44,11 +44,20 @@ class FrontController{
 		require 'view/reportView.php';
 	}
 
-	public function addFlagg($commentId){
+	public function addFlag($commentId){
 		$commentManager = new CommentManager();
-		$totalFlags = $commentManager->countFlags($_GET['id']);
-		$totalFlags++;
-		$plusOneFlag = $commentManager->flagComment($totalFlags, $commentId);
+		$totalFlags = $commentManager->countFlags($commentId);
+		
+		if($totalFlags == null)
+		{
+			$totalFlags++;
+			$newFlag = $commentManager->createFlag($totalFlags, $commentId);
+		}
+		else
+		{
+			$totalFlags++;
+			$plusOneFlag = $commentManager->updateFlag($totalFlags, $commentId);
+		}
 
 		require 'view/flaggedView.php';
 	}

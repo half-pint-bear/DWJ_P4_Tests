@@ -1,4 +1,5 @@
-<?php ob_start();?>
+<?php ob_start();
+var_dump($totalFlags);?>
 
 <p>Voulez-vous signaler le commentaire suivant de <strong><?= $report['author'];?></strong> ?</p>
 <?= $report['comment'];?>

@@ -1,4 +1,6 @@
-<?php ob_start();?>
+<?php ob_start();
+
+var_dump($totalFlags);?>
 
 <p>Le commentaire a bien été signalé.</p>
 <p><a href="index.php">Retour à l'accueil</a></p>

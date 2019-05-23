@@ -31,7 +31,14 @@ class CommentManager extends Manager{
 		return $totalFlags;
 	}
 
-	public function flagComment($flags, $commentId){
+	public function createFlag($flags, $commentId){
+		$sql = 'INSERT INTO reported_comments(flags, comment_id) VALUES(?, ?)';
+		$newFlag = $this->queryExecution($sql, array($flags, $commentId));
+
+		return $newFlag;
+	}
+
+	public function updateFlag($flags, $commentId){
 		$sql = 'UPDATE reported_comments SET flags = ? WHERE id = ?';
 		$plusOneFlag = $this->queryExecution($sql, array($flags, $commentId));
 
