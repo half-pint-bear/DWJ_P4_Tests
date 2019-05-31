@@ -39,6 +39,7 @@ class FrontController{
 
 	public function signalComment(){
 		$commentManager = new CommentManager();
+		$totalFlags = $commentManager->countFlags($_GET['id']);
 		$report = $commentManager->reportComment($_GET['id']);
 
 		require 'view/reportView.php';
@@ -48,7 +49,7 @@ class FrontController{
 		$commentManager = new CommentManager();
 		$totalFlags = $commentManager->countFlags($commentId);
 		
-		if($totalFlags == null)
+		if($totalFlags == 0)
 		{
 			$totalFlags++;
 			$newFlag = $commentManager->createFlag($totalFlags, $commentId);

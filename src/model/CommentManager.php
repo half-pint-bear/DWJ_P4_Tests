@@ -39,7 +39,7 @@ class CommentManager extends Manager{
 	}
 
 	public function updateFlag($flags, $commentId){
-		$sql = 'UPDATE reported_comments SET flags = ? WHERE id = ?';
+		$sql = 'UPDATE reported_comments SET flags = ? WHERE comment_id = ?';
 		$plusOneFlag = $this->queryExecution($sql, array($flags, $commentId));
 
 		return $plusOneFlag;
