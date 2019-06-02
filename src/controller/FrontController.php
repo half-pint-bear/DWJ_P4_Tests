@@ -37,32 +37,6 @@ class FrontController{
 		}
 	}
 
-	public function signalComment(){
-		$commentManager = new CommentManager();
-		$totalFlags = $commentManager->countFlags($_GET['id']);
-		$report = $commentManager->reportComment($_GET['id']);
-
-		require 'view/reportView.php';
-	}
-
-	public function addFlag($commentId){
-		$commentManager = new CommentManager();
-		$totalFlags = $commentManager->countFlags($commentId);
-		
-		if($totalFlags == 0)
-		{
-			$totalFlags++;
-			$newFlag = $commentManager->createFlag($totalFlags, $commentId);
-		}
-		else
-		{
-			$totalFlags++;
-			$plusOneFlag = $commentManager->updateFlag($totalFlags, $commentId);
-		}
-
-		require 'view/flaggedView.php';
-	}
-
 	public function login(){
 		$userManager = new UserManager();
 

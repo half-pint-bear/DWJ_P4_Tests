@@ -1,17 +1,12 @@
 <?php
 
-ob_start();
+ob_start();?>
+<p><a href="index.php">Retour à l'accueil</a></p>
+<?
 echo '<br><br>' . $post['content'] . '<br><br>';
 
 foreach($comments as $comment){
 	echo $comment['author'] . ' a dit :<br>' . $comment['comment'];
-	if(isset($_SESSION['login'])){
-	?>
-		<form method="post" action="index.php?action=reportComment&amp;id=<?=$comment['id']?>">
-			<input type="submit" value="Signaler" name="report"/>
-		</form>
-	<?php
-	}
 }
 ?>
 <br><br>

@@ -16,32 +16,4 @@ class CommentManager extends Manager{
 		return $newComment;
 	}
 
-	public function reportComment($commentId){
-		$sql = 'SELECT * FROM mvc_comments WHERE id = ?';
-		$req = $this->queryExecution($sql, array($commentId));
-
-		$report = $req->fetch(\PDO::FETCH_ASSOC);
-		return $report;
-	}
-
-	public function countFlags($commentId){
-		$sql = 'SELECT COUNT(flags) FROM reported_comments WHERE comment_id = ?';
-		$totalFlags = $this->queryExecution($sql, array($commentId))->fetchColumn();
-		
-		return $totalFlags;
-	}
-
-	public function createFlag($flags, $commentId){
-		$sql = 'INSERT INTO reported_comments(flags, comment_id) VALUES(?, ?)';
-		$newFlag = $this->queryExecution($sql, array($flags, $commentId));
-
-		return $newFlag;
-	}
-
-	public function updateFlag($flags, $commentId){
-		$sql = 'UPDATE reported_comments SET flags = ? WHERE comment_id = ?';
-		$plusOneFlag = $this->queryExecution($sql, array($flags, $commentId));
-
-		return $plusOneFlag;
-	}
 }
