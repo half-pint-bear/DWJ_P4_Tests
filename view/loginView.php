@@ -11,6 +11,10 @@ if(isset($_POST['login']) && isset($_POST['password']))
 		$_SESSION['login'] = $user['login'];
 		header('Location:index.php');
 	}
+	else
+	{
+		echo '<p>Erreur d\'authentification. Veuillez recommencer</p>';
+	}
 }
 ?>
 <p><a href="index.php?action=home">Retour à l'accueil</a></p>

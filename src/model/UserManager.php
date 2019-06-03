@@ -3,9 +3,9 @@ namespace App\src\model;
 
 class UserManager extends Manager{
 	//Users table management methods
-	public function createUser($userLogin){
-		$sql = 'INSERT INTO mvc_users(login, registration_date) VALUES(?, NOW())';
-		$newUser = $this->queryExecution($sql, array($userLogin));
+	public function createUser($userLogin, $password){
+		$sql = 'INSERT INTO mvc_users(login, password, registration_date) VALUES(?, ?, NOW())';
+		$newUser = $this->queryExecution($sql, array($userLogin, $password));
 
 		return $newUser;
 	}

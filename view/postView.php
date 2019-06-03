@@ -2,11 +2,22 @@
 
 ob_start();?>
 <p><a href="index.php">Retour à l'accueil</a></p>
-<?
-echo '<br><br>' . $post['content'] . '<br><br>';
-
+<?php
+echo '<h2>' . $post['title'] . ':</h2>';
+echo '<br>' . $post['content'] . '<br><br>';
+var_dump($totalFlags['flags']);
+echo '<br><br>';
 foreach($comments as $comment){
-	echo $comment['author'] . ' a dit :<br>' . $comment['comment'];
+	echo '<strong>' . $comment['author'] . ' a dit :</strong><br>' . $comment['comment'];
+	if(isset($_SESSION['login']))
+	{
+	?>
+		<br><br>
+		<form method="post" action="">
+			<input type="submit" value="Signaler"/>
+		</form>
+	<?php
+	}
 }
 ?>
 <br><br>

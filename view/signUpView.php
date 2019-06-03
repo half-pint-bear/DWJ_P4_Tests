@@ -5,7 +5,7 @@ if(isset($_POST['login']))
 {
 	if($_POST['password'] == $_POST['confirm'])
 	{
-		$user = $userManager->createUser($_POST['login']);
+		$user = $userManager->createUser($_POST['login'], $_POST['password']);
 		session_start();
 		$_SESSION['login'] = $_POST['login'];
 		header('Location:index.php');

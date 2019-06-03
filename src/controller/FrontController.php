@@ -19,6 +19,7 @@ class FrontController{
 
 		$comm = new CommentManager();
 		$comments = $comm->getComments($_GET['id']);
+		$totalFlags = $comm->countFlags($_GET['id']);
 
 		require 'view/postView.php';
 	}
@@ -29,12 +30,22 @@ class FrontController{
 
 		if($newComment === false)
 		{
-			throw new Exception('Impossible d\'ajouter le commentaire');
+			die('Impossible d\'ajouter le commentaire');
 		}
 		else
 		{
 			header('Location:index.php?action=post&id=' . $postId);
 		}
+	}
+
+	public function addFlag(/* $params*/){
+		$commentManager = new CommentManager();
+
+		// count actual flags number
+
+		//if null => call createFlag method
+
+		//else => call updateFlag method
 	}
 
 	public function login(){
