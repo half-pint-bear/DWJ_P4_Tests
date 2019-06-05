@@ -40,6 +40,9 @@ class Router{
 					case 'addComment':
 						$this->_frontCtrl->addComment($_GET['id'], $_SESSION['login'], $_POST['newComment']);
 						break;
+					case 'reportComment':
+						$this->_frontCtrl->reportComment($_GET['id']);
+						break;
 					default:
 						echo '<p>Action non valide</p>';
 				}

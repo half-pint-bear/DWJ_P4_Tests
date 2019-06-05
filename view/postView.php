@@ -5,16 +5,17 @@ ob_start();?>
 <?php
 echo '<h2>' . $post['title'] . ':</h2>';
 echo '<br>' . $post['content'] . '<br><br>';
-var_dump($totalFlags['flags']);
+
 echo '<br><br>';
-foreach($comments as $comment){
+foreach($comments as $comment)
+{
 	echo '<strong>' . $comment['author'] . ' a dit :</strong><br>' . $comment['comment'];
 	if(isset($_SESSION['login']))
 	{
 	?>
 		<br><br>
-		<form method="post" action="">
-			<input type="submit" value="Signaler"/>
+		<form method="post" action="index.php?action=reportComment&amp;id=<?=$comment['id'];?>">
+			<input type="submit" name="flag<?=$comment['id'];?>" value="Signaler"/>
 		</form>
 	<?php
 	}

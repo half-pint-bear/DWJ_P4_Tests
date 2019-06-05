@@ -3,7 +3,7 @@ namespace App\src\controller;
 
 use App\src\model\PostManager;
 use App\src\model\CommentManager;
-use \App\src\model\UserManager;
+use App\src\model\UserManager;
 
 class FrontController{
 	public function home(){
@@ -19,7 +19,7 @@ class FrontController{
 
 		$comm = new CommentManager();
 		$comments = $comm->getComments($_GET['id']);
-		$totalFlags = $comm->countFlags($_GET['id']);
+		$flags = $comm->getFlags($_GET['id']);
 
 		require 'view/postView.php';
 	}
@@ -38,14 +38,25 @@ class FrontController{
 		}
 	}
 
-	public function addFlag(/* $params*/){
+	public function reportComment($commentId){
 		$commentManager = new CommentManager();
 
 		// count actual flags number
+		$flags = $commentManager->getFlags($commentId);
 
 		//if null => call createFlag method
-
+		if($flags == null)
+		{
+			$newFlag = $commentManager->createFlag($commentId);
+		}
 		//else => call updateFlag method
+		else
+		{
+			$flags['flags']++;
+			$totalFlags = $commentManager->updateFlag($flags['flags'], $commentId);
+		}
+
+		require 'view/reportView.php';
 	}
 
 	public function login(){
