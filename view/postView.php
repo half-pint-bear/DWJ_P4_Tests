@@ -4,20 +4,30 @@ ob_start();?>
 <p><a href="index.php">Retour à l'accueil</a></p>
 <?php
 echo '<h2>' . $post['title'] . ':</h2>';
-echo '<br>' . $post['content'] . '<br><br>';
+echo '<br>' . $post['content'] . '<br><br><br>	';
 
-echo '<br><br>';
 foreach($comments as $comment)
 {
-	echo '<strong>' . $comment['author'] . ' a dit :</strong><br>' . $comment['comment'];
+	echo '<strong>' . $comment['author'] . ' a dit :</strong><br>' . $comment['comment'] . '<br>';
+	echo 'Commentaire n°' . $comment['id'];
+	echo '<br>';
 	if(isset($_SESSION['login']))
 	{
 	?>
-		<br><br>
+		
 		<form method="post" action="index.php?action=reportComment&amp;id=<?=$comment['id'];?>">
-			<input type="submit" name="flag<?=$comment['id'];?>" value="Signaler"/>
+			<input type="submit" name="flag" value="Signaler"/>
 		</form>
+		<br>
 	<?php
+		if($_SESSION['login'] == $comment['author'])
+		{
+		?>
+			<form method='post' action="">
+				<input type="submit" name="modify" value="Modifier"/>
+			</form>
+		<?php
+		}
 	}
 }
 ?>
