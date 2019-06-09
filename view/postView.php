@@ -31,11 +31,12 @@ if(!isset($_SESSION['login']))
 	<?php
 }
 else{
+	var_dump($newComment);
 	?>
 <form method="post" action="index.php?action=addComment&amp;id=<?=$post['id']?>">
 	
 	<label for="newComment">Commentaire :</label>
-	<input type="textarea" id="newComment" name="newComment"/>
+	<input type="textarea" id="newComment" name="newComment" required/>
 	<input type="submit" value="Envoyer"/>
 </form>
 <?php

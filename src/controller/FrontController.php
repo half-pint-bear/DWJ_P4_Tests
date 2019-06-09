@@ -40,16 +40,10 @@ class FrontController{
 
 	public function reportComment($commentId){
 		$commentManager = new CommentManager();
-
-		// count actual flags number
 		$flags = $commentManager->getFlags($commentId);
 
-		//if null => call createFlag method
 		if($flags == null)
-		{
 			$newFlag = $commentManager->createFlag($commentId);
-		}
-		//else => call updateFlag method
 		else
 		{
 			$flags['flags']++;
