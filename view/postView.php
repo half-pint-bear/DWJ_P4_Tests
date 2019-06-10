@@ -11,6 +11,7 @@ foreach($comments as $comment)
 	echo '<strong>' . $comment['author'] . ' a dit :</strong><br>' . $comment['comment'] . '<br>';
 	echo 'Commentaire n°' . $comment['id'];
 	echo '<br>';
+
 	if(isset($_SESSION['login']))
 	{
 	?>
@@ -23,7 +24,9 @@ foreach($comments as $comment)
 		if($_SESSION['login'] == $comment['author'])
 		{
 		?>
-			<form method='post' action="">
+			<form method='post' action="index.php?action=editComment&amp;id=<?=$comment['id'];?>&amp;post_id=<?=$comment['post_id'];?>">
+				<label for="changedComment">Modifier :</label>
+				<input type="textarea" id="changedComment" name="changedComment"/>
 				<input type="submit" name="modify" value="Modifier"/>
 			</form>
 		<?php

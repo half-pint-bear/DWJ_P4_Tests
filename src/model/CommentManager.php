@@ -16,6 +16,13 @@ class CommentManager extends Manager{
 		return $newComment;
 	}
 
+	public function updateComment($comment, $commentId){
+		$sql = 'UPDATE mvc_comments SET comment = ? WHERE id = ?';
+		$changedComment = $this->queryExecution($sql, array($comment, $commentId));
+
+		return $changedComment;
+	}
+
 	public function getFlags($commentId){
 		$sql = 'SELECT flags FROM reported_comments WHERE comment_id = ?';
 		$req = $this->queryExecution($sql, array($commentId));

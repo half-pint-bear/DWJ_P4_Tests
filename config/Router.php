@@ -40,6 +40,9 @@ class Router{
 					case 'addComment':
 						$this->_frontCtrl->addComment($_GET['id'], $_SESSION['login'], $_POST['newComment']);
 						break;
+					case 'editComment':
+						$this->_frontCtrl->editComment($_POST['changedComment'], $_GET['id']);
+						break;
 					case 'reportComment':
 						$this->_frontCtrl->reportComment($_GET['id']);
 						break;

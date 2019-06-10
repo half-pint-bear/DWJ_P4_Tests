@@ -35,7 +35,15 @@ class FrontController{
 		else
 		{
 			header('Location:index.php?action=post&id=' . $postId);
+			exit;
 		}
+	}
+
+	public function editComment($comment, $commentId){
+		$commentManager = new CommentManager();
+		$changedComment = $commentManager->updateComment($comment, $commentId);
+		header('Location:index.php?action=post&id=' . $_GET['post_id']);
+		exit;
 	}
 
 	public function reportComment($commentId){
