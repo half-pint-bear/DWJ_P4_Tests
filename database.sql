@@ -14,26 +14,28 @@ CREATE TABLE `mvc_comments` (
   `author` varchar(255) NOT NULL,
   `comment` text NOT NULL,
   `comment_date` datetime NOT NULL,
+  `flags` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `post_id` (`post_id`),
   CONSTRAINT `mvc_comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `mvc_posts` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `mvc_comments` (`id`, `post_id`, `author`, `comment`, `comment_date`) VALUES
-(1,	1,	'Jean_Lucas',	'Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit multitudo ad commercanda quae Indi mittunt et Seres aliaque plurima vehi terra marique consueta.',	'0000-00-00 00:00:00'),
-(2,	2,	'Francis',	'Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit multitudo ad commercanda quae Indi mittunt et Seres aliaque plurima vehi terra marique consueta.',	'2019-03-11 10:32:24'),
-(3,	3,	'Gérard',	'Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit multitudo ad commercanda quae Indi mittunt et Seres aliaque plurima vehi terra marique consueta.',	'0000-00-00 00:00:00'),
-(4,	4,	'Marcel',	'Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit multitudo ad commercanda quae Indi mittunt et Seres aliaque plurima vehi terra marique consueta.',	'2019-03-11 10:32:43'),
-(5,	5,	'Piotr',	'Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit multitudo ad commercanda quae Indi mittunt et Seres aliaque plurima vehi terra marique consueta.',	'2019-03-11 10:32:53'),
-(6,	5,	'Maurice',	'Letatatum temporis...',	'2019-03-11 12:09:48'),
-(7,	5,	'Hugo',	'Maxi-galette pour tous!',	'2019-03-11 16:19:47'),
-(9,	4,	'Yam Pôl',	'Tu parles à qui là?',	'2019-03-11 16:29:22'),
-(10,	3,	'Marcel',	'Il fait beau aujourd\'hui',	'2019-03-12 10:45:08'),
-(11,	5,	'Popak',	'Loren ipsum et tout le tralala',	'2019-03-19 10:09:50'),
-(12,	4,	'Bouli',	'Bouli?',	'2019-03-19 11:31:17'),
-(14,	3,	'Dozo',	'Corne de bouc!',	'2019-04-08 14:37:01'),
-(21,	5,	'jojo',	'pas jojo!',	'2019-05-06 12:04:38'),
-(22,	2,	'marco',	'polo!',	'0000-00-00 00:00:00');
+INSERT INTO `mvc_comments` (`id`, `post_id`, `author`, `comment`, `comment_date`, `flags`) VALUES
+(1,	1,	'Jean_Lucas',	'Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit multitudo ad commercanda quae Indi mittunt et Seres aliaque plurima vehi terra marique consueta.',	'0000-00-00 00:00:00',	NULL),
+(2,	2,	'Francis',	'Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit multitudo ad commercanda quae Indi mittunt et Seres aliaque plurima vehi terra marique consueta.',	'2019-03-11 10:32:24',	NULL),
+(3,	3,	'Gérard',	'Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit multitudo ad commercanda quae Indi mittunt et Seres aliaque plurima vehi terra marique consueta.',	'0000-00-00 00:00:00',	NULL),
+(4,	4,	'Marcel',	'Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit multitudo ad commercanda quae Indi mittunt et Seres aliaque plurima vehi terra marique consueta.',	'2019-03-11 10:32:43',	NULL),
+(5,	5,	'Piotr',	'Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit multitudo ad commercanda quae Indi mittunt et Seres aliaque plurima vehi terra marique consueta.',	'2019-03-11 10:32:53',	NULL),
+(6,	5,	'Maurice',	'Letatatum temporis...',	'2019-03-11 12:09:48',	NULL),
+(7,	5,	'Hugo',	'Maxi-galette pour tous!',	'2019-03-11 16:19:47',	NULL),
+(9,	4,	'Yam Pôl',	'Tu parles à qui là?',	'2019-03-11 16:29:22',	NULL),
+(10,	3,	'Marcel',	'Il fait beau aujourd\'hui',	'2019-03-12 10:45:08',	NULL),
+(11,	5,	'Popak',	'Loren ipsum et tout le tralala',	'2019-03-19 10:09:50',	NULL),
+(12,	4,	'Bouli',	'Bouli?',	'2019-03-19 11:31:17',	NULL),
+(14,	3,	'Dozo',	'Corne de bouc!',	'2019-04-08 14:37:01',	NULL),
+(21,	5,	'jojo',	'pas jojo!',	'2019-05-06 12:04:38',	NULL),
+(22,	2,	'marco',	'polo!',	'0000-00-00 00:00:00',	NULL),
+(23,	2,	'marco',	'test d\'affichage du bouton modifier',	'0000-00-00 00:00:00',	NULL);
 
 DROP TABLE IF EXISTS `mvc_posts`;
 CREATE TABLE `mvc_posts` (
@@ -70,15 +72,14 @@ INSERT INTO `mvc_users` (`id`, `login`, `password`, `email`, `registration_date`
 DROP TABLE IF EXISTS `reported_comments`;
 CREATE TABLE `reported_comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `comment_id` int(11) NOT NULL,
   `flags` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `comment_id` (`comment_id`),
-  CONSTRAINT `reported_comments_ibfk_1` FOREIGN KEY (`comment_id`) REFERENCES `mvc_comments` (`id`),
-  CONSTRAINT `reported_comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `mvc_users` (`id`)
+  `comment_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `reported_comments` (`id`, `flags`, `comment_id`) VALUES
+(1,	2,	1),
+(2,	2,	23);
 
--- 2019-05-23 08:45:21
+-- 2019-06-11 08:32:39
+
